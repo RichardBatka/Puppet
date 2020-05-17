@@ -1,0 +1,4 @@
+ENSURE THE CODE IS CORRECT
+
+puppet parser validate init.pp
+

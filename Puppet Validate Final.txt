@@ -1,0 +1,15 @@
+
+VALIDATE THE RETURN
+
+Notice: Compiled catalog for puppet.example.com in environment production in 0.26 seconds
+Notice: /Stage[main]/Accounts::Groups/Group[username] /ensure: current_value absent, should be present (noop)
+Notice: Class[Accounts::Groups]: Would have triggered 'refresh' from 1 events
+Notice: /Stage[main]/Accounts/User[username] /ensure: current_value absent, should be present (noop)
+Notice: Class[Accounts]: Would have triggered 'refresh' from 1 events
+Notice: Stage[main]: Would have triggered 'refresh' from 2 events
+Notice: Finished catalog run in 0.02 seconds
+
+Now, from the examples directory, run
+
+
+puppet apply init.pp

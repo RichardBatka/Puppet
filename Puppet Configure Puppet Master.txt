@@ -1,0 +1,8 @@
+CONFIGURE PUPPET MASTER
+
+[main]
+dns_alt_names=puppet,puppet.example.com
+
+systemctl start puppetmaster
+
+netstat -anpl | grep 8140

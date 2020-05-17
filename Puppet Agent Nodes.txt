@@ -1,0 +1,94 @@
+AGENT NODE
+Adding Modules to Configure
+
+mkdir /etc/puppet/modules/accounts
+cd /etc/puppet/modules/accounts
+
+mkdir {examples,files,manifests,templates}
+
+cd manifests
+ 
+/etc/puppet/modules/accounts/manifests/init.pp
+
+class accounts {
+
+  user { 'richbatka':
+    ensure      => present,
+    home        => '/home/username',
+    shell       => '/bin/bash',
+    managehome  => true,
+    gid         => 'RichBatka',
+    }
+
+}
+
+
+/etc/puppet/modules/accounts/manifests/groups.pp
+
+class accounts::groups {
+
+  group { 'username':
+    ensure  => present,
+  }
+
+}
+
+
+
+/etc/puppet/modules/accounts/manifests/init.pp
+
+class accounts {
+
+  include groups
+  ...
+}
+
+
+
+/etc/puppet/modules/accounts/manifests/init.pp
+
+class accounts {
+
+  $rootgroup = $osfamily ? {
+    'Debian'  => 'sudo',
+    'RedHat'  => 'wheel',
+    default   => warning('This distribution is not supported by the Accounts module'),
+  }
+
+  user { 'username':
+  ...
+
+}
+
+
+/etc/puppet/modules/accounts/manifests/init.pp
+
+user { 'username':
+  ensure      => present,
+  home        => '/home/username',
+  shell       => '/bin/bash',
+  managehome  => true,
+  gid         => 'username',
+  groups      => "$rootgroup",
+}
+
+
+openssl passwd -1
+
+
+/etc/puppet/modules/accounts/manifests/init.pp
+
+class accounts {
+
+  user { 'username':
+    ensure      => present,
+    home        => '/home/username',
+    shell       => '/bin/bash',
+    managehome  => true,
+    gid         => 'richbatka',
+    groups      => "$rootgroup",
+    password    => '29ad0dc149457e83636addbc1d18840a',
+    }
+
+}
+

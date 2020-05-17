@@ -1,0 +1,25 @@
+Install and Configure Puppet
+4 Core. 8 GB. Four (4) Hosts 
+Debian or Red Hat
+05/16/2020
+ 
+INSTALLING PUPPET MASTER
+
+[Note: .deb file will configure the repositories]
+
+wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+dpkg -i puppetlabs-release-pc1-xenial.deb
+apt update
+
+apt install puppetmaster-passenger
+
+systemctl stop apache2
+
+puppet resource package puppetmaster ensure=latest
+
+[main]
+dns_alt_names=puppet,puppet.example.com
+
+systemctl start puppetmaster
+
+netstat -anpl | grep 8140

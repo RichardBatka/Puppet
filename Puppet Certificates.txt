@@ -1,0 +1,11 @@
+CERTIFICATES
+
+Generate & Sign
+
+puppet agent -t
+
+puppet cert list
+
+puppet cert sign hostname.example.com
+
+puppet agent -t

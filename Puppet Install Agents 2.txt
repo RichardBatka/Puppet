@@ -1,0 +1,12 @@
+
+PUPPET AGENTS
+[Ubuntu]
+
+apt install puppet
+
+
+PUPPET AGENTS
+[CentOS 8]
+
+rpm -ivh https://yum.puppetlabs.com/el/7/products/x86_64/puppetlabs-release-22.0-2.noarch.rpm
+yum install puppet
